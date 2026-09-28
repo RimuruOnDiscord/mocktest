@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemistry Mock Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script>
+    // Permanent Dark Mode
+    document.documentElement.classList.add('dark');
+    try { localStorage.setItem('mocktest_theme', 'dark'); } catch(e) {}
+  </script>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --success: #10b981;
+      --error: #ef4444;
+      --page-bg: #080d1a;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: #080d1a;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.012em;
+      color: #e2e8f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    code, kbd, samp, pre, .font-mono, input.font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+    }
+
+    .test-input {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 5px 8px;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      background: #ffffff;
+      color: #0f172a;
+    }
+    .test-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+    }
+    .test-input.correct {
+      border-color: var(--success);
+      background-color: #f0fdf4;
+      color: #15803d;
+      font-weight: 600;
+    }
+    .test-input.incorrect {
+      border-color: var(--error);
+      background-color: #fef2f2;
+      color: #b91c1c;
+      font-weight: 600;
+    }
+
+    /* DARK MODE STYLES */
+    html.dark {
+      color-scheme: dark;
+    }
+    html.dark body {
+      background-color: #080d1a;
+      color: #e2e8f0;
+    }
+    html.dark .card {
+      background-color: #0f172a !important;
+      border-color: #1e293b !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+    }
+    html.dark .bg-white {
+      background-color: #0f172a !important;
+      border-color: #1e293b !important;
+    }
+    html.dark .bg-slate-50 {
+      background-color: #0b1120 !important;
+      border-color: #1e293b !important;
+    }
+    html.dark .bg-slate-50\/50 {
+      background-color: rgba(11, 17, 32, 0.6) !important;
+    }
+    html.dark .text-slate-900 {
+      color: #f8fafc !important;
+    }
+    html.dark .text-slate-800 {
+      color: #f1f5f9 !important;
+    }
+    html.dark .text-slate-700 {
+      color: #e2e8f0 !important;
+    }
+    html.dark .text-slate-600 {
+      color: #cbd5e1 !important;
+    }
+    html.dark .text-slate-500 {
+      color: #94a3b8 !important;
+    }
+    html.dark .text-slate-400 {
+      color: #64748b !important;
+    }
+    html.dark .border-slate-100,
+    html.dark .border-slate-200 {
+      border-color: #1e293b !important;
+    }
+    html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+    html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+      border-color: #1e293b !important;
+    }
+
+    /* DARK MODE TABLE & HOVER FIXES: Zero white flash or white borders */
+    html.dark table {
+      border-color: #1e293b !important;
+    }
+    html.dark thead,
+    html.dark thead tr,
+    html.dark thead th,
+    html.dark th {
+      background-color: #0b1120 !important;
+      border-color: #1e293b !important;
+      color: #94a3b8 !important;
+    }
+    html.dark tbody,
+    html.dark tbody tr {
+      border-color: #1e293b !important;
+    }
+    html.dark tbody tr:hover,
+    html.dark tr:hover,
+    html.dark tr.hover\:bg-slate-50:hover,
+    html.dark tr.hover\:bg-slate-50\/80:hover,
+    html.dark tr.bg-white:hover,
+    html.dark tr.bg-slate-50\/50:hover,
+    html.dark .hover\:bg-slate-50:hover,
+    html.dark .hover\:bg-slate-50\/80:hover {
+      background-color: #162032 !important;
+    }
+    html.dark .bg-slate-100\/75,
+    html.dark .bg-slate-100 {
+      background-color: #0b1120 !important;
+      border-color: #1e293b !important;
+      color: #cbd5e1 !important;
+    }
+    html.dark .hover\:bg-slate-100:hover {
+      background-color: #1e293b !important;
+    }
+    html.dark .hover\:bg-slate-200:hover {
+      background-color: #334155 !important;
+    }
+
+    html.dark .test-input {
+      background-color: #162032 !important;
+      border-color: #334155 !important;
+      color: #f8fafc !important;
+    }
+    html.dark .test-input:focus {
+      border-color: #3b82f6 !important;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25) !important;
+    }
+    html.dark .test-input.correct {
+      border-color: #059669 !important;
+      background-color: #064e3b !important;
+      color: #6ee7b7 !important;
+    }
+    html.dark .test-input.incorrect {
+      border-color: #e11d48 !important;
+      background-color: #4c0519 !important;
+      color: #fda4af !important;
+    }
+    /* CUSTOM ANIMATED DROPDOWN */
+    .custom-dropdown-container {
+      position: relative;
+      width: 130px;
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+    .custom-dropdown-container.is-open {
+      z-index: 50;
+    }
+
+    .custom-dropdown-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 38px;
+      padding: 0 12px;
+      font-size: 0.825rem;
+      border-radius: 9px;
+      border: 1.5px solid #cbd5e1;
+      background-color: #ffffff;
+      color: #0f172a;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      user-select: none;
+      box-sizing: border-box;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+    .custom-dropdown-btn:hover {
+      border-color: #94a3b8;
+      background-color: #f8fafc;
+    }
+    .custom-dropdown-btn:focus-visible {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+    .custom-dropdown-btn.correct {
+      border-color: var(--success) !important;
+      background-color: #f0fdf4 !important;
+      box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.25) !important;
+    }
+    .custom-dropdown-btn.incorrect {
+      border-color: var(--error) !important;
+      background-color: #fef2f2 !important;
+      box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.25) !important;
+    }
+
+    html.dark .custom-dropdown-btn {
+      background-color: #162032;
+      border-color: #334155;
+      color: #f8fafc;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    }
+    html.dark .custom-dropdown-btn:hover {
+      background-color: #1e293b;
+      border-color: #475569;
+    }
+    html.dark .custom-dropdown-btn:focus-visible {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+    html.dark .custom-dropdown-btn.correct {
+      border-color: #059669 !important;
+      background-color: #064e3b !important;
+      box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.35) !important;
+    }
+    html.dark .custom-dropdown-btn.incorrect {
+      border-color: #e11d48 !important;
+      background-color: #4c0519 !important;
+      box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.35) !important;
+    }
+
+    .custom-dropdown-chevron {
+      width: 13px;
+      height: 13px;
+      color: #94a3b8;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+    .custom-dropdown-chevron.rotate-180 {
+      transform: rotate(180deg);
+    }
+    html.dark .custom-dropdown-chevron {
+      color: #64748b;
+    }
+
+    .custom-dropdown-menu {
+      position: absolute;
+      left: 0;
+      right: 0;
+      width: 100%;
+      top: calc(100% + 5px);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 4px;
+      box-sizing: border-box;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.08);
+      z-index: 60;
+      transform-origin: top center;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    }
+    html.dark .custom-dropdown-menu {
+      background: #0f172a;
+      border-color: #334155;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.35);
+    }
+    .custom-dropdown-menu.hidden-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96) translateY(-5px);
+      pointer-events: none;
+    }
+    .custom-dropdown-menu.open-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+    }
+
+    .custom-dropdown-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      height: 34px;
+      padding: 0 8px;
+      border-radius: 7px;
+      font-size: 0.825rem;
+      font-weight: 700;
+      letter-spacing: 0.025em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+      border: none;
+      background: transparent;
+      color: #1e293b;
+      box-sizing: border-box;
+    }
+    .custom-dropdown-item:hover {
+      background-color: #f1f5f9;
+      color: #2563eb;
+    }
+    .custom-dropdown-item:active {
+      transform: scale(0.97);
+    }
+    html.dark .custom-dropdown-item {
+      color: #f1f5f9;
+    }
+    html.dark .custom-dropdown-item:hover {
+      background-color: #1e293b;
+      color: #60a5fa;
+    }
+
+    @media print {
+      html, html.dark, body, html.dark body { background: white !important; color: black !important; }
+      .no-print { display: none !important; }
+      .test-input, html.dark .test-input {
+        border-bottom: 1.5px solid #000 !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        color: black !important;
+      }
+      .card, html.dark .card { border: 1px solid #cbd5e1 !important; box-shadow: none !important; background: white !important; color: black !important; }
+    }
+  </style>
+</head>
+<body class="p-4 md:p-8">
+
+  <div class="max-w-5xl mx-auto space-y-6">
+
+    <!-- Header Card -->
+    <header class="card bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold text-slate-100 tracking-tight">
+            Chemistry Mock Test
+          </h1>
+          <p class="text-slate-400 text-sm mt-1">
+            Randomized practice for subatomic particles, <i>s, p, d, f</i> electron configurations, and quantum numbers.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3 bg-slate-800/60 p-3 rounded-xl border border-slate-700/60 self-start md:self-auto">
+          <div class="text-right">
+            <div class="text-xs text-slate-400 font-medium">TEST TIMER</div>
+            <div id="timerDisplay" class="text-xl font-mono font-bold text-slate-100">00:00</div>
+          </div>
+          <button id="timerToggleBtn" onclick="toggleTimer()" class="p-2 text-slate-300 hover:text-blue-400 hover:bg-slate-700/60 rounded-lg transition" title="Start/Pause Timer">
+            <svg id="timerIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Toolbar -->
+      <div class="flex flex-wrap items-center gap-3 mt-6 pt-5 border-t border-slate-800/80 no-print">
+        <button onclick="generateNewTest()" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-xl transition shadow-sm hover:shadow">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span>Generate</span>
+        </button>
+
+        <button onclick="gradeTest()" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-xl transition shadow-sm hover:shadow">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Check</span>
+        </button>
+
+        <button onclick="resetAnswers()" class="flex items-center gap-2 text-slate-400 hover:text-slate-200 font-medium px-3 py-2 rounded-xl transition ml-auto">
+          <span>Clear</span>
+        </button>
+      </div>
+
+      <!-- Score Banner -->
+      <div id="scoreBanner" class="hidden mt-6 p-4 rounded-xl border border-slate-700 bg-slate-900/90 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div id="scoreBadge" class="text-2xl font-black px-4 py-2 rounded-lg"></div>
+          <div>
+            <div id="scoreTitle" class="font-bold text-slate-100 text-lg"></div>
+            <div id="scoreSubtitle" class="text-sm text-slate-400"></div>
+          </div>
+        </div>
+        <div id="scoreDetails" class="text-sm font-semibold text-slate-300 flex gap-4"></div>
+      </div>
+    </header>
+
+    <!-- SECTION 1: Subatomic Particles Table -->
+    <section class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div class="mb-4 border-b border-slate-100 pb-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Part 1</span>
+        <h2 class="text-xl font-bold text-slate-900">Subatomic Particles & Isotope Table</h2>
+        <p class="text-xs md:text-sm text-slate-500">
+          Fill in the missing values in the table for each isotope or ion.
+        </p>
+        <p class="text-xs text-blue-600 dark:text-blue-400 font-medium mt-1">
+          Tip for Symbol column: You must type both the mass and atomic numbers, e.g. <code class="px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono text-xs">28 14 Si</code> or <code class="px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono text-xs">23 11 Na +</code> (auto-formats to <sup>28</sup><sub>14</sub>Si or <sup>23</sup><sub>11</sub>Na⁺).
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-sm border-collapse min-w-[620px]">
+          <thead>
+            <tr class="bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-semibold">
+              <th class="p-3 w-12 text-center">#</th>
+              <th class="p-3 text-center min-w-[140px]">Isotope / Ion Symbol</th>
+              <th class="p-3 text-center">Atomic Number (<i>Z</i>)</th>
+              <th class="p-3 text-center">Protons (<i>p</i><sup>+</sup>)</th>
+              <th class="p-3 text-center">Neutrons (<i>n</i><sup>0</sup>)</th>
+              <th class="p-3 text-center">Electrons (<i>e</i><sup>−</sup>)</th>
+              <th class="p-3 text-center">Net Charge</th>
+            </tr>
+          </thead>
+          <tbody id="subatomicTableBody" class="divide-y divide-slate-100 dark:divide-slate-800">
+            <!-- Dynamically populated rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Electron Configurations -->
+    <section class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div class="mb-4 border-b border-slate-100 pb-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Part 2</span>
+        <h2 class="text-xl font-bold text-slate-900"><i>s, p, d, f</i> Electron Configurations</h2>
+        <p class="text-xs md:text-sm text-slate-500">
+          Write the electron configurations (type naturally like <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs">1s2 2s2 2p4</code> or <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs">[Ne] 3s2 3p3</code> — auto-formats with superscripts!).
+        </p>
+      </div>
+
+      <div id="spdfQuestionsContainer" class="space-y-4">
+        <!-- Dynamically populated SPDF questions -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: Quantum Numbers -->
+    <section class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div class="mb-4 border-b border-slate-100 pb-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Part 3</span>
+        <h2 class="text-xl font-bold text-slate-900">Quantum Numbers</h2>
+        <p class="text-xs md:text-sm text-slate-500">
+          Determine whether each quantum state or orbital is <strong>VALID</strong> or <strong>INVALID</strong>, and calculate shell and subshell capacities.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- SUBSECTION A: 4 LITERAL VALID OR INVALID QUESTIONS -->
+        <div class="bg-slate-50 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-2 mb-4">
+            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-base">A. Valid or Invalid Questions</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Read each question and determine whether the proposed situation or quantum set is <strong>VALID</strong> or <strong>INVALID</strong>:
+            </p>
+          </div>
+
+          <div id="validInvalidContainer" class="space-y-3">
+            <!-- Dynamically populated 4 literal valid/invalid questions -->
+          </div>
+        </div>
+
+        <!-- SUBSECTION B: "If this guy has 3 of something, how many of something does it have?" -->
+        <div class="bg-slate-50 dark:bg-slate-900/60 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="border-b border-slate-200 dark:border-slate-800 pb-2 mb-4">
+            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-base">B. Energy Level & Subshell Calculations</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Answer each question for the specified principal energy level (<i>n</i>) or angular momentum quantum number (<i>l</i>):
+            </p>
+          </div>
+
+          <div id="quantumCountsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <!-- Dynamically generated "how many of something" questions -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Subshell & Energy Level Capacities -->
+    <section class="card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+      <div class="mb-5 border-b border-slate-100 pb-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Part 4</span>
+        <h2 class="text-xl font-bold text-slate-900">Subshell & Energy Level Capacities</h2>
+        <p class="text-xs md:text-sm text-slate-500">
+          Fill in the blanks for the number of orbitals and maximum electron capacities.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Subshell Capacities (s, p, d, f) -->
+        <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs">
+          <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">A. Subshell Capacities (<i>s, p, d, f</i>)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Number of orbitals and maximum electron capacity per subshell:</p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-center border-collapse">
+              <thead>
+                <tr class="bg-slate-100/75 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                  <th class="py-3 px-4 text-left">Subshell</th>
+                  <th class="py-3 px-4">Orbitals</th>
+                  <th class="py-3 px-4">Max Electrons</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-sm mr-2 border border-blue-200/50 dark:border-blue-800/50">s</span>
+                    <span>Subshell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_s_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_s_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-sm mr-2 border border-blue-200/50 dark:border-blue-800/50">p</span>
+                    <span>Subshell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_p_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_p_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-sm mr-2 border border-blue-200/50 dark:border-blue-800/50">d</span>
+                    <span>Subshell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_d_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_d_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-sm mr-2 border border-blue-200/50 dark:border-blue-800/50">f</span>
+                    <span>Subshell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_f_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_f_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Main Energy Level Capacities (n=1,2,3,4) -->
+        <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-xs">
+          <div class="px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <h3 class="font-bold text-slate-800 dark:text-slate-200 text-sm">B. Main Energy Levels (<i>n</i> = 1 to 4)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Total orbitals and maximum electron capacity per principal shell:</p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-center border-collapse">
+              <thead>
+                <tr class="bg-slate-100/75 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                  <th class="py-3 px-4 text-left">Energy Level</th>
+                  <th class="py-3 px-4">Total Orbitals</th>
+                  <th class="py-3 px-4">Max Electrons</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-800 bg-white dark:bg-slate-900">
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-xs mr-2 border border-blue-200/50 dark:border-blue-800/50"><i>n</i> = 1</span>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-normal">First Shell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n1_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n1_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-xs mr-2 border border-blue-200/50 dark:border-blue-800/50"><i>n</i> = 2</span>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-normal">Second Shell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n2_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n2_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-xs mr-2 border border-blue-200/50 dark:border-blue-800/50"><i>n</i> = 3</span>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-normal">Third Shell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n3_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n3_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-800/60 transition-colors">
+                  <td class="py-3 px-4 text-left font-semibold text-slate-800 dark:text-slate-200">
+                    <span class="inline-flex items-center justify-center px-2 py-0.5 rounded-lg bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 font-mono font-bold text-xs mr-2 border border-blue-200/50 dark:border-blue-800/50"><i>n</i> = 4</span>
+                    <span class="text-slate-500 dark:text-slate-400 text-xs font-normal">Fourth Shell</span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n4_orb" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                  <td class="py-3 px-4">
+                    <input id="cap_n4_elec" class="test-input w-16 text-center font-bold" placeholder="—">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="text-center text-xs text-slate-500 py-6 border-t border-slate-800 no-print">
+      Chemistry Mock Test • Subatomic Particles & <i>s, p, d, f</i> Configurations • Self-Grading
+    </footer>
+
+  </div>
+
+  <script>
+    const ELEMENTS = [
+      { z: 1, sym: "H", name: "Hydrogen", mass: 1, config: "1s1", noble: "1s1" },
+      { z: 2, sym: "He", name: "Helium", mass: 4, config: "1s2", noble: "1s2" },
+      { z: 3, sym: "Li", name: "Lithium", mass: 7, config: "1s2 2s1", noble: "[He] 2s1" },
+      { z: 4, sym: "Be", name: "Beryllium", mass: 9, config: "1s2 2s2", noble: "[He] 2s2" },
+      { z: 5, sym: "B", name: "Boron", mass: 11, config: "1s2 2s2 2p1", noble: "[He] 2s2 2p1" },
+      { z: 6, sym: "C", name: "Carbon", mass: 12, config: "1s2 2s2 2p2", noble: "[He] 2s2 2p2" },
+      { z: 7, sym: "N", name: "Nitrogen", mass: 14, config: "1s2 2s2 2p3", noble: "[He] 2s2 2p3" },
+      { z: 8, sym: "O", name: "Oxygen", mass: 16, config: "1s2 2s2 2p4", noble: "[He] 2s2 2p4" },
+      { z: 9, sym: "F", name: "Fluorine", mass: 19, config: "1s2 2s2 2p5", noble: "[He] 2s2 2p5" },
+      { z: 10, sym: "Ne", name: "Neon", mass: 20, config: "1s2 2s2 2p6", noble: "[He] 2s2 2p6" },
+      { z: 11, sym: "Na", name: "Sodium", mass: 23, config: "1s2 2s2 2p6 3s1", noble: "[Ne] 3s1" },
+      { z: 12, sym: "Mg", name: "Magnesium", mass: 24, config: "1s2 2s2 2p6 3s2", noble: "[Ne] 3s2" },
+      { z: 13, sym: "Al", name: "Aluminum", mass: 27, config: "1s2 2s2 2p6 3s2 3p1", noble: "[Ne] 3s2 3p1" },
+      { z: 14, sym: "Si", name: "Silicon", mass: 28, config: "1s2 2s2 2p6 3s2 3p2", noble: "[Ne] 3s2 3p2" },
+      { z: 15, sym: "P", name: "Phosphorus", mass: 31, config: "1s2 2s2 2p6 3s2 3p3", noble: "[Ne] 3s2 3p3" },
+      { z: 16, sym: "S", name: "Sulfur", mass: 32, config: "1s2 2s2 2p6 3s2 3p4", noble: "[Ne] 3s2 3p4" },
+      { z: 17, sym: "Cl", name: "Chlorine", mass: 35, config: "1s2 2s2 2p6 3s2 3p5", noble: "[Ne] 3s2 3p5" },
+      { z: 18, sym: "Ar", name: "Argon", mass: 40, config: "1s2 2s2 2p6 3s2 3p6", noble: "[Ne] 3s2 3p6" },
+      { z: 19, sym: "K", name: "Potassium", mass: 39, config: "1s2 2s2 2p6 3s2 3p6 4s1", noble: "[Ar] 4s1" },
+      { z: 20, sym: "Ca", name: "Calcium", mass: 40, config: "1s2 2s2 2p6 3s2 3p6 4s2", noble: "[Ar] 4s2" },
+      { z: 24, sym: "Cr", name: "Chromium", mass: 52, config: "1s2 2s2 2p6 3s2 3p6 4s1 3d5", noble: "[Ar] 4s1 3d5", isException: true },
+      { z: 26, sym: "Fe", name: "Iron", mass: 56, config: "1s2 2s2 2p6 3s2 3p6 4s2 3d6", noble: "[Ar] 4s2 3d6" },
+      { z: 29, sym: "Cu", name: "Copper", mass: 63, config: "1s2 2s2 2p6 3s2 3p6 4s1 3d10", noble: "[Ar] 4s1 3d10", isException: true },
+      { z: 30, sym: "Zn", name: "Zinc", mass: 65, config: "1s2 2s2 2p6 3s2 3p6 4s2 3d10", noble: "[Ar] 4s2 3d10" },
+      { z: 35, sym: "Br", name: "Bromine", mass: 80, config: "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p5", noble: "[Ar] 4s2 3d10 4p5" },
+      { z: 36, sym: "Kr", name: "Krypton", mass: 84, config: "1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6", noble: "[Ar] 4s2 3d10 4p6" }
+    ];
+
+    const COMMON_IONS = [
+      { sym: "Na+", z: 11, mass: 23, charge: 1, e: 10, config: "[Ne]", name: "Sodium ion" },
+      { sym: "Mg2+", z: 12, mass: 24, charge: 2, e: 10, config: "[Ne]", name: "Magnesium ion" },
+      { sym: "Al3+", z: 13, mass: 27, charge: 3, e: 10, config: "[Ne]", name: "Aluminum ion" },
+      { sym: "N3-", z: 7, mass: 14, charge: -3, e: 10, config: "[Ne]", name: "Nitride ion" },
+      { sym: "O2-", z: 8, mass: 16, charge: -2, e: 10, config: "[Ne]", name: "Oxide ion" },
+      { sym: "F-", z: 9, mass: 19, charge: -1, e: 10, config: "[Ne]", name: "Fluoride ion" },
+      { sym: "P3-", z: 15, mass: 31, charge: -3, e: 18, config: "[Ar]", name: "Phosphide ion" },
+      { sym: "S2-", z: 16, mass: 32, charge: -2, e: 18, config: "[Ar]", name: "Sulfide ion" },
+      { sym: "Cl-", z: 17, mass: 35, charge: -1, e: 18, config: "[Ar]", name: "Chloride ion" },
+      { sym: "Ca2+", z: 20, mass: 40, charge: 2, e: 18, config: "[Ar]", name: "Calcium ion" },
+      { sym: "Fe2+", z: 26, mass: 56, charge: 2, e: 24, config: "[Ar] 3d6", name: "Iron(II) ion" },
+      { sym: "Fe3+", z: 26, mass: 56, charge: 3, e: 23, config: "[Ar] 3d5", name: "Iron(III) ion" },
+      { sym: "Cu2+", z: 29, mass: 63, charge: 2, e: 27, config: "[Ar] 3d9", name: "Copper(II) ion" }
+    ];
+
+    // POOL OF LITERAL VALID/INVALID QUESTIONS
+    const LITERAL_VI_POOL = [
+      {
+        question: "Can an electron in an atom have the quantum numbers <i>n</i> = 2, <i>l</i> = 1, <i>m<sub>l</sub></i> = 0, <i>m<sub>s</sub></i> = +½?",
+        valid: true,
+        reason: "VALID: Represents an electron in a 2p orbital (n=2, l=1; ml is in [-1, +1]; ms is +1/2)."
+      },
+      {
+        question: "Can an electron in the <i>n</i> = 3 principal energy level occupy a subshell with <i>l</i> = 3?",
+        valid: false,
+        reason: "INVALID: The angular momentum quantum number l must be strictly less than n (l can only be 0, 1, or 2 for n=3; there is no 3f subshell)."
+      },
+      {
+        question: "Is it possible for an electron in a <i>p</i>-subshell (<i>l</i> = 1) to have a magnetic quantum number <i>m<sub>l</sub></i> = +2?",
+        valid: false,
+        reason: "INVALID: For l = 1, ml is restricted to integer values between -l and +l (-1, 0, or +1). +2 is not allowed."
+      },
+      {
+        question: "Can an electron have a spin quantum number of <i>m<sub>s</sub></i> = +1?",
+        valid: false,
+        reason: "INVALID: The spin quantum number ms can only be +½ (spin up) or −½ (spin down)."
+      },
+      {
+        question: "Can a <i>3d</i> orbital have the quantum numbers <i>n</i> = 3, <i>l</i> = 2, <i>m<sub>l</sub></i> = −2, <i>m<sub>s</sub></i> = −½?",
+        valid: true,
+        reason: "VALID: Represents an electron in a 3d orbital (n=3, l=2; ml is within [-2, +2]; ms is -1/2)."
+      },
+      {
+        question: "Can an electron in an <i>s</i>-subshell (<i>l</i> = 0) have a magnetic quantum number <i>m<sub>l</sub></i> = −1?",
+        valid: false,
+        reason: "INVALID: When l = 0 (s-subshell), ml can only be 0."
+      },
+      {
+        question: "Can an electron in an atom possess the quantum numbers <i>n</i> = 4, <i>l</i> = 3, <i>m<sub>l</sub></i> = +2, <i>m<sub>s</sub></i> = −½?",
+        valid: true,
+        reason: "VALID: Represents a valid electron in a 4f orbital (n=4, l=3; ml is within [-3, +3]; ms is -1/2)."
+      },
+      {
+        question: "Can an orbital exist with the quantum numbers <i>n</i> = 2, <i>l</i> = 2, <i>m<sub>l</sub></i> = 0 (a 2d orbital)?",
+        valid: false,
+        reason: "INVALID: A 2d orbital cannot exist because l must be less than n (for n=2, max l is 1)."
+      },
+      {
+        question: "Can an electron in a <i>1s</i> orbital have the set <i>n</i> = 1, <i>l</i> = 0, <i>m<sub>l</sub></i> = 0, <i>m<sub>s</sub></i> = +½?",
+        valid: true,
+        reason: "VALID: Represents a ground-state electron in the 1s subshell."
+      }
+    ];
+
+    let currentTestData = {
+      section1: [],
+      section2_spdf: [],
+      section3_vi: [],
+      section3_counts: {}
+    };
+
+    let timerInterval = null, timerSeconds = 0, isTimerRunning = false;
+
+    function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+    function formatIonSymbol(sym, mass, z) {
+      let baseSym = sym, chargeStr = "";
+      if (sym.includes("+") || sym.includes("-")) {
+        const parts = sym.match(/([A-Za-z]+)(.*)/);
+        if (parts) { baseSym = parts[1]; chargeStr = parts[2]; }
+      }
+      return `<sup>${mass}</sup><sub>${z}</sub>${baseSym}<sup>${chargeStr}</sup>`;
+    }
+
+    function generateNewTest() {
+      // 1. Part 1: Subatomic particles table
+      const neutralSamples = shuffle(ELEMENTS.filter(e => [6, 11, 14, 16, 17, 19, 20, 26, 35].includes(e.z))).slice(0, 3);
+      const ionSamples = shuffle(COMMON_IONS).slice(0, 3);
+      const combined = shuffle([...neutralSamples.map(n => ({
+        symDisplay: formatIonSymbol(n.sym, n.mass, n.z),
+        symPlain: n.sym, z: n.z, mass: n.mass, p: n.z, n: n.mass - n.z, e: n.z, charge: 0
+      })), ...ionSamples.map(i => ({
+        symDisplay: formatIonSymbol(i.sym, i.mass, i.z),
+        symPlain: i.sym, z: i.z, mass: i.mass, p: i.z, n: i.mass - i.z, e: i.e, charge: i.charge
+      }))]);
+
+      currentTestData.section1 = combined.map((row, idx) => {
+        const maskable = ['sym', 'z', 'p', 'n', 'e', 'charge'];
+        const chosenMasks = shuffle(maskable).slice(0, 3);
+        if (chosenMasks.includes('z') && chosenMasks.includes('p')) {
+          chosenMasks.splice(chosenMasks.indexOf('p'), 1);
+        }
+        if (chosenMasks.includes('sym') && chosenMasks.includes('n')) {
+          chosenMasks.splice(chosenMasks.indexOf('n'), 1);
+        }
+        if (chosenMasks.includes('sym') && chosenMasks.includes('z')) {
+          chosenMasks.splice(chosenMasks.indexOf('z'), 1);
+        }
+        return { rowIdx: idx, ...row, masks: chosenMasks };
+      });
+
+      // 2. Part 2: SPDF Electron Configurations
+      const fullTarget = shuffle(ELEMENTS.filter(e => e.z >= 7 && e.z <= 16))[0];
+      const nobleTarget = shuffle(ELEMENTS.filter(e => e.z >= 19 && e.z <= 35 && !e.isException))[0];
+      const exceptionTarget = shuffle(ELEMENTS.filter(e => e.isException))[0];
+      const ionTarget = shuffle(COMMON_IONS.filter(i => ["Fe2+", "Fe3+", "Cu2+", "S2-", "O2-", "Ca2+"].includes(i.sym)))[0];
+
+      currentTestData.section2_spdf = [
+        { id: "spdf_full", type: "full", title: `Full ground-state electron configuration for ${fullTarget.name} (${fullTarget.sym}, Z = ${fullTarget.z})`, prompt: "Write full 1s² 2s²...", answer: fullTarget.config, explanation: `Z = ${fullTarget.z}. Follow Aufbau filling order until total electrons equal ${fullTarget.z}.` },
+        { id: "spdf_noble", type: "noble", title: `Condensed noble gas electron configuration for ${nobleTarget.name} (${nobleTarget.sym}, Z = ${nobleTarget.z})`, prompt: "e.g. [Ar] 4s²...", answer: nobleTarget.noble, explanation: `Preceding noble gas is Argon [Ar]. Followed by valence subshells.` },
+        { id: "spdf_exception", type: "exception", title: `Condensed noble gas electron configuration for ${exceptionTarget.name} (${exceptionTarget.sym}, Z = ${exceptionTarget.z})`, prompt: `Noble gas notation for ${exceptionTarget.sym}`, answer: exceptionTarget.noble, explanation: exceptionTarget.z === 24 ? "Promotes one 4s electron to achieve half-filled 3d⁵ stability: [Ar] 4s¹ 3d⁵." : "Promotes one 4s electron to achieve filled 3d¹⁰ stability: [Ar] 4s¹ 3d¹⁰." },
+        { id: "spdf_ion", type: "ion", title: `Ground-state electron configuration for the ion ${ionTarget.name} (${ionTarget.sym})`, prompt: `Condensed notation for ${ionTarget.sym}`, answer: ionTarget.config, explanation: ionTarget.sym.startsWith("Fe") ? "Transition metals lose outermost valence 4s electrons first before 3d!" : "Achieves full octet noble gas configuration." }
+      ];
+
+      // 3A. Part 3A: 4 Literal Valid/Invalid Questions
+      const validPool = LITERAL_VI_POOL.filter(s => s.valid);
+      const invalidPool = LITERAL_VI_POOL.filter(s => !s.valid);
+      const chosenValid = shuffle(validPool).slice(0, 2);
+      const chosenInvalid = shuffle(invalidPool).slice(0, 2);
+      currentTestData.section3_vi = shuffle([...chosenValid, ...chosenInvalid]);
+
+      // 3B. Part 3B: "If this guy has 3 of something, how many of something does it have?"
+      const targetN = shuffle([2, 3, 4])[0];
+      const targetL = shuffle([{ val: 1, name: "p" }, { val: 2, name: "d" }, { val: 3, name: "f" }])[0];
+
+      currentTestData.section3_counts = {
+        n: targetN,
+        n_subshells: targetN,
+        n_orbitals: targetN * targetN,
+        n_maxElec: 2 * targetN * targetN,
+        l_val: targetL.val,
+        l_name: targetL.name,
+        l_orbitals: 2 * targetL.val + 1,
+        l_maxElec: 2 * (2 * targetL.val + 1)
+      };
+
+      renderTest();
+      resetUIFeedback();
+    }
+
+    function renderTest() {
+      // 1. Render Part 1 Table
+      const tbody = document.getElementById("subatomicTableBody");
+      tbody.innerHTML = "";
+
+      currentTestData.section1.forEach((row, i) => {
+        const tr = document.createElement("tr");
+        tr.className = i % 2 === 0 ? "bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors" : "bg-slate-50/50 dark:bg-slate-950/40 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition-colors";
+
+        function cell(field, val, width = "w-16") {
+          return row.masks.includes(field)
+            ? `<td class="p-2.5 text-center"><input type="text" id="s1_row${i}_${field}" data-ans="${val}" class="test-input ${width}" placeholder="?"></td>`
+            : `<td class="p-2.5 text-center font-medium text-slate-700 dark:text-slate-300 font-mono">${val > 0 && field === 'charge' ? '+' + val : val}</td>`;
+        }
+
+        const symCell = row.masks.includes('sym') 
+          ? `<td class="p-2.5 text-center">
+               <div class="flex flex-col items-center justify-center">
+                 <input type="text" id="s1_row${i}_sym" data-ans="${row.symPlain}" oninput="handleSymbolInput(this, ${i})" onblur="handleSymbolBlur(this, ${i})" onkeydown="handleSymbolKeydown(this, event, ${i})" class="test-input w-28 md:w-32 text-center font-mono font-bold text-sm tracking-wide" placeholder="?" autocomplete="off" spellcheck="false">
+                 <div id="s1_preview_${i}" class="min-h-[22px] mt-1 flex items-center justify-center"></div>
+               </div>
+             </td>`
+          : `<td class="p-2.5 font-bold text-slate-900 dark:text-slate-100 text-center font-mono">${row.symDisplay}</td>`;
+
+        tr.innerHTML = `
+          <td class="p-2.5 text-center font-mono text-xs text-slate-400 dark:text-slate-500 font-semibold">${i + 1}</td>
+          ${symCell}
+          ${cell('z', row.z, "w-16")}
+          ${cell('p', row.p, "w-16")}
+          ${cell('n', row.n, "w-16")}
+          ${cell('e', row.e, "w-16")}
+          ${cell('charge', row.charge, "w-16")}
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // 2. Render Part 2: SPDF Questions
+      const s2Container = document.getElementById("spdfQuestionsContainer");
+      s2Container.innerHTML = "";
+      currentTestData.section2_spdf.forEach((q, idx) => {
+        const div = document.createElement("div");
+        div.className = "p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl space-y-2";
+        div.innerHTML = `
+          <div class="font-bold text-slate-800 dark:text-slate-200 text-sm">Question ${idx + 1}: ${q.title}</div>
+          <div class="space-y-1">
+            <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+              <input type="text" id="s2_q${idx}" data-ans="${q.answer}" oninput="handleConfigInput(this, ${idx})" onblur="handleConfigBlur(this, ${idx})" onkeydown="handleConfigKeydown(this, event, ${idx})" class="test-input flex-1 text-left font-mono font-semibold text-sm" placeholder="${q.prompt}" autocomplete="off" spellcheck="false">
+              <div id="s2_feedback_${idx}" class="text-xs hidden font-medium"></div>
+            </div>
+            <div id="s2_preview_${idx}" class="min-h-[20px] text-xs font-mono font-semibold text-blue-600 dark:text-blue-400"></div>
+          </div>
+        `;
+        s2Container.appendChild(div);
+      });
+
+      // 3A. Render Part 3A: 4 Literal Valid or Invalid Questions
+      const viContainer = document.getElementById("validInvalidContainer");
+      viContainer.innerHTML = "";
+      currentTestData.section3_vi.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3";
+        div.innerHTML = `
+          <div class="flex items-start gap-3 flex-1">
+            <span class="font-bold text-slate-400 dark:text-slate-500 text-sm mt-0.5">${idx + 1}.</span>
+            <div class="space-y-1">
+              <div class="text-sm font-medium text-slate-800 dark:text-slate-200 leading-snug">
+                ${item.question}
+              </div>
+              <div id="s3_vi_feedback_${idx}" class="text-xs hidden font-medium"></div>
+            </div>
+          </div>
+          <div class="relative flex items-center justify-end self-end md:self-auto custom-dropdown-container">
+            <input type="hidden" id="s3_vi_${idx}" data-ans="${item.valid ? 'VALID' : 'INVALID'}" value="">
+            <button type="button" id="s3_vi_btn_${idx}" onclick="toggleDropdown(${idx}, event)" aria-haspopup="listbox" aria-expanded="false" class="custom-dropdown-btn">
+              <span id="s3_vi_btn_content_${idx}" class="text-slate-400 dark:text-slate-400 font-medium text-xs">Choose</span>
+              <svg id="s3_vi_chevron_${idx}" class="custom-dropdown-chevron" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div id="s3_vi_menu_${idx}" role="listbox" class="custom-dropdown-menu hidden-menu">
+              <button type="button" onclick="selectDropdownOption(${idx}, 'VALID', event)" class="custom-dropdown-item group">
+                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span>VALID</span>
+              </button>
+              <button type="button" onclick="selectDropdownOption(${idx}, 'INVALID', event)" class="custom-dropdown-item group mt-1">
+                <svg class="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+                <span>INVALID</span>
+              </button>
+            </div>
+          </div>
+        `;
+        viContainer.appendChild(div);
+      });
+
+      // 3B. Render Part 3B: Energy Level & Subshell Calculations
+      const countsContainer = document.getElementById("quantumCountsContainer");
+      const c = currentTestData.section3_counts;
+      countsContainer.innerHTML = `
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <span class="text-slate-700 dark:text-slate-300">1. If an energy level has principal quantum number <strong><i>n</i> = ${c.n}</strong>, how many <strong>subshells</strong> does it have?</span>
+          <input type="text" id="s3_c_subshells" data-ans="${c.n_subshells}" class="test-input w-16" placeholder="_">
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <span class="text-slate-700 dark:text-slate-300">2. If an energy level has principal quantum number <strong><i>n</i> = ${c.n}</strong>, how many <strong>total orbitals</strong> does it contain?</span>
+          <input type="text" id="s3_c_orbitals" data-ans="${c.n_orbitals}" class="test-input w-16" placeholder="_">
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <span class="text-slate-700 dark:text-slate-300">3. If an energy level has principal quantum number <strong><i>n</i> = ${c.n}</strong>, what is the <strong>maximum number of electrons</strong> it can hold?</span>
+          <input type="text" id="s3_c_maxElec" data-ans="${c.n_maxElec}" class="test-input w-16" placeholder="_">
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between">
+          <span class="text-slate-700 dark:text-slate-300">4. If a subshell has angular momentum quantum number <strong><i>l</i> = ${c.l_val}</strong>, how many <strong>orbitals</strong> does it contain?</span>
+          <input type="text" id="s3_c_subOrbs" data-ans="${c.l_orbitals}" class="test-input w-16" placeholder="_">
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center justify-between md:col-span-2">
+          <span class="text-slate-700 dark:text-slate-300">5. If a subshell has angular momentum quantum number <strong><i>l</i> = ${c.l_val}</strong>, what is the <strong>maximum number of electrons</strong> it can hold?</span>
+          <input type="text" id="s3_c_subMaxElec" data-ans="${c.l_maxElec}" class="test-input w-16" placeholder="_">
+        </div>
+      `;
+    }
+
+    const SUP_MAP = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','+':'⁺','-':'⁻' };
+    const SUB_MAP = { '0':'₀','1':'₁','2':'₂','3':'₃','4':'₄','5':'₅','6':'₆','7':'₇','8':'₈','9':'₉' };
+    const REV_SUP_MAP = Object.fromEntries(Object.entries(SUP_MAP).map(([k,v]) => [v,k]));
+    const REV_SUB_MAP = Object.fromEntries(Object.entries(SUB_MAP).map(([k,v]) => [v,k]));
+
+    function toSuperscript(str) {
+      return String(str).split('').map(c => SUP_MAP[c] || c).join('');
+    }
+    function toSubscript(str) {
+      return String(str).split('').map(c => SUB_MAP[c] || c).join('');
+    }
+
+    // SPDF Electron Configuration Auto-Formatting & Normalization
+    function formatElectronConfig(str) {
+      if (!str) return '';
+      let s = str.trim();
+
+      // Convert existing unicode superscripts back to regular numbers
+      s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, c => REV_SUP_MAP[c] || c);
+      s = s.replace(/\^/g, '');
+
+      // Capitalize noble gas core: [he] -> [He], [ne] -> [Ne], [ar] -> [Ar], [kr] -> [Kr], [xe] -> [Xe]
+      s = s.replace(/\[\s*([a-zA-Z]{1,2})\s*\]/g, (m, sym) => {
+        return '[' + sym.charAt(0).toUpperCase() + (sym.length > 1 ? sym.charAt(1).toLowerCase() : '') + ']';
+      });
+
+      // Ensure space after noble gas: [Ne]3s2 -> [Ne] 3s2
+      s = s.replace(/(\[[A-Za-z]{1,2}\])(?=[0-9a-zA-Z])/g, '$1 ');
+
+      // Insert space before a new subshell like 2p63s2 -> 2p6 3s2 or 3d104p5 -> 3d10 4p5
+      s = s.replace(/([0-9][sSpPdDfF](?:1[0-4]|[1-9]))(?=[1-7][sSpPdDfF])/g, '$1 ');
+      s = s.replace(/\s+/g, ' ').trim();
+
+      // Format subshell counts to superscripts: 1s2 -> 1s², 2p6 -> 2p⁶, 3d10 -> 3d¹⁰
+      s = s.replace(/([1-7][sSpPdDfF])(1[0-4]|[1-9])/g, (m, sub, count) => {
+        return sub.toLowerCase() + toSuperscript(count);
+      });
+
+      return s;
+    }
+
+    function normalizeConfig(str) {
+      if (!str) return "";
+      let s = str.trim();
+      s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g, c => REV_SUP_MAP[c] || c);
+      s = s.replace(/\^/g, '');
+      s = s.replace(/\[\s*([a-zA-Z]{1,2})\s*\]/g, '[$1]');
+      s = s.replace(/(\[[A-Za-z]{1,2}\])(?=[0-9a-zA-Z])/g, '$1 ');
+      s = s.replace(/([0-9][sSpPdDfF](?:1[0-4]|[1-9]))(?=[1-7][sSpPdDfF])/g, '$1 ');
+      return s.toLowerCase().replace(/\s+/g, ' ').trim();
+    }
+
+    function handleConfigInput(input, idx) {
+      const val = input.value.trim();
+      const preview = document.getElementById(`s2_preview_${idx}`);
+      if (!val) {
+        if (preview) preview.innerHTML = '';
+        return;
+      }
+      const formatted = formatElectronConfig(val);
+      if (preview) {
+        preview.innerHTML = `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/50 dark:border-blue-800/50"><span>Preview:</span> <strong>${formatted}</strong></span>`;
+      }
+    }
+
+    function handleConfigBlur(input, idx) {
+      const val = input.value.trim();
+      if (!val) return;
+      const formatted = formatElectronConfig(val);
+      if (formatted) {
+        input.value = formatted;
+      }
+    }
+
+    function handleConfigKeydown(input, event, idx) {
+      if (event.key === "Enter") {
+        input.blur();
+      }
+    }
+
+    // Part 1 Isotope Auto-Formatting: User MUST type the numbers, do not inject them!
+    function parseIsotopeInput(inputStr) {
+      if (!inputStr) return null;
+      let s = inputStr.trim();
+      if (!s) return null;
+
+      // Check if input already contains unicode superscript or subscript characters (e.g. ²⁸₁₄Si or ²⁸₁₄Si²⁺)
+      const unicodeMatch = s.match(/^([⁰¹²³⁴⁵⁶⁷⁸⁹]+)?([₀₁₂₃₄₅₆₇₈₉]+)?([A-Za-z]{1,2})([⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]*)$/);
+      if (unicodeMatch && (unicodeMatch[1] || unicodeMatch[2] || unicodeMatch[4])) {
+        let mass = unicodeMatch[1] ? unicodeMatch[1].split('').map(c => REV_SUP_MAP[c] || c).join('') : '';
+        let z = unicodeMatch[2] ? unicodeMatch[2].split('').map(c => REV_SUB_MAP[c] || c).join('') : '';
+        let sym = unicodeMatch[3];
+        let charge = unicodeMatch[4] ? unicodeMatch[4].split('').map(c => REV_SUP_MAP[c] || c).join('') : '';
+
+        sym = sym.charAt(0).toUpperCase() + (sym.length > 1 ? sym.charAt(1).toLowerCase() : '');
+
+        charge = charge.replace(/\s+/g, '');
+        if (charge === '+1' || charge === '1+') charge = '+';
+        else if (charge === '-1' || charge === '1-') charge = '-';
+        else if (charge === '+2') charge = '2+';
+        else if (charge === '-2') charge = '2-';
+        else if (charge === '+3') charge = '3+';
+        else if (charge === '-3') charge = '3-';
+
+        let unicode = (mass ? toSuperscript(mass) : '') + (z ? toSubscript(z) : '') + sym + (charge ? toSuperscript(charge) : '');
+        let html = (mass ? '<sup>' + mass + '</sup>' : '') + (z ? '<sub>' + z + '</sub>' : '') + sym + (charge ? '<sup>' + charge + '</sup>' : '');
+        return { mass, z, sym, charge, unicode, html };
+      }
+
+      // Plain text formats:
+      // "28 14 Si 2+" or "28 14 Si" or "28/14 Si" or "28-14 Si"
+      let mass = '', z = '', sym = '', charge = '';
+
+      const twoNumMatch = s.match(/^(\d+)[\s,\/\-_]+(\d+)[\s,\/\-_]+([A-Za-z]{1,2})(.*)$/);
+      if (twoNumMatch) {
+        mass = twoNumMatch[1];
+        z = twoNumMatch[2];
+        sym = twoNumMatch[3];
+        charge = twoNumMatch[4].trim();
+      } else {
+        const oneNumMatch = s.match(/^(\d+)[\s,\/\-_]*([A-Za-z]{1,2})(.*)$/);
+        if (oneNumMatch) {
+          mass = oneNumMatch[1];
+          sym = oneNumMatch[2];
+          charge = oneNumMatch[3].trim();
+        } else {
+          const symMatch = s.match(/^([A-Za-z]{1,2})(.*)$/);
+          if (symMatch) {
+            sym = symMatch[1];
+            charge = symMatch[2].trim();
+          }
+        }
+      }
+
+      if (!sym) return null;
+
+      sym = sym.charAt(0).toUpperCase() + (sym.length > 1 ? sym.charAt(1).toLowerCase() : '');
+
+      charge = charge.replace(/\s+/g, '');
+      if (charge === '+1' || charge === '1+') charge = '+';
+      else if (charge === '-1' || charge === '1-') charge = '-';
+      else if (charge === '+2') charge = '2+';
+      else if (charge === '-2') charge = '2-';
+      else if (charge === '+3') charge = '3+';
+      else if (charge === '-3') charge = '3-';
+
+      // DO NOT inject mass or z if user did not type them!
+      let unicode = (mass ? toSuperscript(mass) : '') + (z ? toSubscript(z) : '') + sym + (charge ? toSuperscript(charge) : '');
+      let html = (mass ? '<sup>' + mass + '</sup>' : '') + (z ? '<sub>' + z + '</sub>' : '') + sym + (charge ? '<sup>' + charge + '</sup>' : '');
+
+      return { mass, z, sym, charge, unicode, html };
+    }
+
+    function normalizeSymbol(str) {
+      if (!str) return "";
+      let s = str.trim();
+      s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻−]/g, c => REV_SUP_MAP[c] || c);
+      s = s.replace(/[₀₁₂₃₄₅₆₇₈₉]/g, '');
+
+      // Strip all leading numbers and delimiters (mass and atomic numbers, e.g. "28 14 ")
+      s = s.replace(/^(?:[0-9]+[\s,\/\-_]*)+/, '');
+      // Strip trailing mass numbers like Si-28 (mass >= 4)
+      s = s.replace(/[\s\-_]+([4-9]|[1-9][0-9]+)$/, '');
+
+      const match = s.match(/([A-Za-z]+)(.*)/);
+      if (!match) return s.toLowerCase();
+
+      const base = match[1].toLowerCase();
+      let charge = match[2].replace(/\s+/g, '');
+      if (charge === '+1' || charge === '1+') charge = '+';
+      else if (charge === '-1' || charge === '1-') charge = '-';
+      else if (charge === '+2') charge = '2+';
+      else if (charge === '-2') charge = '2-';
+      else if (charge === '+3') charge = '3+';
+      else if (charge === '-3') charge = '3-';
+
+      return base + charge;
+    }
+
+    function handleSymbolInput(input, rowIdx) {
+      const val = input.value.trim();
+      const preview = document.getElementById(`s1_preview_${rowIdx}`);
+
+      if (!val) {
+        if (preview) preview.innerHTML = "";
+        return;
+      }
+
+      const parsed = parseIsotopeInput(val);
+      if (parsed && preview) {
+        if (parsed.mass && parsed.z) {
+          preview.innerHTML = `<span class="inline-flex items-center justify-center font-mono font-bold text-xs px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/60 shadow-xs tracking-tight">${parsed.html}</span>`;
+        } else {
+          preview.innerHTML = `<span class="text-[11px] font-semibold text-amber-600 dark:text-amber-400">Type mass & atomic # (e.g. 28 14 Si)</span>`;
+        }
+      } else if (preview) {
+        preview.innerHTML = "";
+      }
+    }
+
+    function handleSymbolBlur(input, rowIdx) {
+      const val = input.value.trim();
+      if (!val) return;
+      const parsed = parseIsotopeInput(val);
+      // Only format to unicode superscripts if user typed both mass and atomic number
+      if (parsed && parsed.mass && parsed.z) {
+        input.value = parsed.unicode;
+      }
+    }
+
+    function handleSymbolKeydown(input, event, rowIdx) {
+      if (event.key === "Enter") {
+        input.blur();
+      }
+    }
+
+    function gradeTest() {
+      let totalQuestions = 0, correctCount = 0;
+
+      // Section 1: Subatomic table
+      currentTestData.section1.forEach((row, i) => {
+        row.masks.forEach(field => {
+          totalQuestions++;
+          const input = document.getElementById(`s1_row${i}_${field}`);
+          if (!input) return;
+          const userVal = input.value.trim().toLowerCase();
+          const correctVal = String(input.dataset.ans).toLowerCase().trim();
+
+          let isMatch = false;
+          if (field === 'charge') {
+            const normUser = userVal.replace(/\+/g, "").replace(/-/g, "");
+            const normAns = correctVal.replace(/\+/g, "").replace(/-/g, "");
+            const userSign = userVal.includes("-") ? -1 : 1;
+            const ansSign = correctVal.includes("-") ? -1 : 1;
+            if (parseInt(userVal) === parseInt(correctVal) || (normUser === normAns && userSign === ansSign)) isMatch = true;
+          } else if (field === 'sym') {
+            const parsed = parseIsotopeInput(userVal);
+            if (parsed && parsed.mass && parsed.z) {
+              const massMatch = parseInt(parsed.mass) === row.mass;
+              const zMatch = parseInt(parsed.z) === row.z;
+              const symMatch = parsed.sym.toLowerCase() === row.symPlain.replace(/[^A-Za-z]/g, '').toLowerCase();
+
+              let expCharge = '';
+              if (row.charge === 1) expCharge = '+';
+              else if (row.charge === -1) expCharge = '-';
+              else if (row.charge > 1) expCharge = row.charge + '+';
+              else if (row.charge < -1) expCharge = Math.abs(row.charge) + '-';
+
+              const chargeMatch = (parsed.charge || '') === expCharge;
+              isMatch = massMatch && zMatch && symMatch && chargeMatch;
+            } else {
+              isMatch = false;
+            }
+          } else {
+            isMatch = parseInt(userVal) === parseInt(correctVal);
+          }
+
+          if (isMatch) {
+            correctCount++;
+            input.classList.remove('incorrect');
+            input.classList.add('correct');
+          } else {
+            input.classList.remove('correct');
+            input.classList.add('incorrect');
+            if (field === 'sym') {
+              const p = parseIsotopeInput(userVal);
+              input.title = (p && (!p.mass || !p.z)) 
+                ? `Must type mass & atomic # (e.g. ${row.mass} ${row.z} ${row.symPlain})`
+                : `Expected: ${row.mass} ${row.z} ${row.symPlain}`;
+            } else {
+              input.title = `Correct Answer: ${input.dataset.ans}`;
+            }
+          }
+        });
+      });
+
+      // Section 2: SPDF Configurations
+      currentTestData.section2_spdf.forEach((q, idx) => {
+        totalQuestions++;
+        const input = document.getElementById(`s2_q${idx}`);
+        const feedback = document.getElementById(`s2_feedback_${idx}`);
+        if (!input) return;
+
+        if (normalizeConfig(input.value) === normalizeConfig(input.dataset.ans)) {
+          correctCount++;
+          input.classList.remove('incorrect');
+          input.classList.add('correct');
+          if (feedback) { 
+            feedback.className = "text-xs font-semibold text-emerald-600 dark:text-emerald-400 block"; 
+            feedback.textContent = "Correct!"; 
+          }
+        } else {
+          input.classList.remove('correct');
+          input.classList.add('incorrect');
+          const formattedAns = formatElectronConfig(input.dataset.ans);
+          input.title = `Correct: ${formattedAns}`;
+          if (feedback) { 
+            feedback.className = "text-xs font-semibold text-rose-600 dark:text-rose-400 block"; 
+            feedback.textContent = `Correct: ${formattedAns}`; 
+          }
+        }
+      });
+
+      // Section 3A: 4 Literal Valid/Invalid questions
+      currentTestData.section3_vi.forEach((item, idx) => {
+        totalQuestions++;
+        const input = document.getElementById(`s3_vi_${idx}`);
+        const btn = document.getElementById(`s3_vi_btn_${idx}`);
+        const feedback = document.getElementById(`s3_vi_feedback_${idx}`);
+        if (!input) return;
+        const userChoice = (input.value || "").trim().toUpperCase();
+        const expected = item.valid ? "VALID" : "INVALID";
+
+        if (userChoice === expected) {
+          correctCount++;
+          if (btn) {
+            btn.classList.remove('incorrect');
+            btn.classList.add('correct');
+          }
+          if (feedback) {
+            feedback.className = "text-xs font-semibold text-emerald-600 dark:text-emerald-400 block";
+            feedback.textContent = "Correct";
+          }
+        } else {
+          if (btn) {
+            btn.classList.remove('correct');
+            btn.classList.add('incorrect');
+            btn.title = `Correct: ${expected} (${item.reason})`;
+          }
+          if (feedback) {
+            feedback.className = "text-xs font-semibold text-rose-600 dark:text-rose-400 block";
+            feedback.textContent = `Correct: ${expected} (${item.reason})`;
+          }
+        }
+      });
+
+      // Section 3B: Quantum Calculations ("If this has ... how many ... does it have?")
+      const s3cFields = ['s3_c_subshells', 's3_c_orbitals', 's3_c_maxElec', 's3_c_subOrbs', 's3_c_subMaxElec'];
+      s3cFields.forEach(id => {
+        totalQuestions++;
+        const input = document.getElementById(id);
+        if (!input) return;
+        const userVal = parseInt(input.value.trim());
+        const expected = parseInt(input.dataset.ans);
+
+        if (userVal === expected) {
+          correctCount++;
+          input.classList.remove('incorrect');
+          input.classList.add('correct');
+        } else {
+          input.classList.remove('correct');
+          input.classList.add('incorrect');
+          input.title = `Expected: ${expected}`;
+        }
+      });
+
+      // Section 4: Subshell & Energy Level Capacities
+      const capInputs = [
+        { id: 'cap_s_orb', val: 1 }, { id: 'cap_s_elec', val: 2 },
+        { id: 'cap_p_orb', val: 3 }, { id: 'cap_p_elec', val: 6 },
+        { id: 'cap_d_orb', val: 5 }, { id: 'cap_d_elec', val: 10 },
+        { id: 'cap_f_orb', val: 7 }, { id: 'cap_f_elec', val: 14 },
+        { id: 'cap_n1_orb', val: 1 }, { id: 'cap_n1_elec', val: 2 },
+        { id: 'cap_n2_orb', val: 4 }, { id: 'cap_n2_elec', val: 8 },
+        { id: 'cap_n3_orb', val: 9 }, { id: 'cap_n3_elec', val: 18 },
+        { id: 'cap_n4_orb', val: 16 }, { id: 'cap_n4_elec', val: 32 }
+      ];
+
+      capInputs.forEach(item => {
+        totalQuestions++;
+        const input = document.getElementById(item.id);
+        if (input && parseInt(input.value) === item.val) {
+          correctCount++;
+          input.classList.add('correct');
+          input.classList.remove('incorrect');
+        } else if (input) {
+          input.classList.add('incorrect');
+          input.classList.remove('correct');
+          input.title = `Expected: ${item.val}`;
+        }
+      });
+
+      const percentage = Math.round((correctCount / totalQuestions) * 100);
+      const scoreBanner = document.getElementById("scoreBanner");
+      const scoreBadge = document.getElementById("scoreBadge");
+      const scoreTitle = document.getElementById("scoreTitle");
+      const scoreSubtitle = document.getElementById("scoreSubtitle");
+      const scoreDetails = document.getElementById("scoreDetails");
+
+      scoreBanner.classList.remove("hidden");
+      scoreBadge.textContent = `${percentage}%`;
+
+      if (percentage >= 85) {
+        scoreBanner.className = "mt-6 p-4 rounded-xl border border-blue-500/40 bg-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg";
+        scoreBadge.className = "text-2xl font-black px-4 py-2 rounded-lg bg-blue-600 text-white";
+        scoreTitle.className = "font-bold text-slate-100 text-lg";
+        scoreSubtitle.className = "text-sm text-slate-400";
+        scoreTitle.textContent = "Outstanding Work!";
+        scoreSubtitle.textContent = "Mastery of atomic structure, SPDF configurations, and quantum numbers!";
+      } else if (percentage >= 65) {
+        scoreBanner.className = "mt-6 p-4 rounded-xl border border-blue-500/30 bg-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg";
+        scoreBadge.className = "text-2xl font-black px-4 py-2 rounded-lg bg-blue-500/20 text-blue-400 border border-blue-500/40";
+        scoreTitle.className = "font-bold text-slate-100 text-lg";
+        scoreSubtitle.className = "text-sm text-slate-400";
+        scoreTitle.textContent = "Good Effort!";
+        scoreSubtitle.textContent = "Review the highlighted red fields to double-check.";
+      } else {
+        scoreBanner.className = "mt-6 p-4 rounded-xl border border-rose-900/40 bg-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg";
+        scoreBadge.className = "text-2xl font-black px-4 py-2 rounded-lg bg-rose-950/60 text-rose-300 border border-rose-800/50";
+        scoreTitle.className = "font-bold text-slate-100 text-lg";
+        scoreSubtitle.className = "text-sm text-slate-400";
+        scoreTitle.textContent = "Keep Practicing!";
+        scoreSubtitle.textContent = "Review your answers, then generate a new test to try again.";
+      }
+
+      scoreDetails.className = "text-sm font-semibold text-slate-300 flex gap-4";
+      scoreDetails.innerHTML = `<div>Score: <span class="text-blue-400 font-bold">${correctCount}</span> / ${totalQuestions}</div>`;
+      scoreBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+
+
+    function resetUIFeedback() {
+      document.getElementById("scoreBanner").classList.add("hidden");
+      document.querySelectorAll(".test-input").forEach(el => {
+        el.classList.remove('correct', 'incorrect');
+        el.title = "";
+      });
+      document.querySelectorAll(".custom-dropdown-btn").forEach(btn => {
+        btn.classList.remove('correct', 'incorrect');
+        btn.title = "";
+      });
+      document.querySelectorAll("[id^=s2_feedback_]").forEach(el => el.classList.add("hidden"));
+      document.querySelectorAll("[id^=s3_vi_feedback_]").forEach(el => el.classList.add("hidden"));
+      closeAllDropdowns();
+    }
+
+    function resetAnswers() {
+      document.querySelectorAll(".test-input").forEach(el => {
+        el.value = "";
+        el.classList.remove('correct', 'incorrect');
+      });
+      if (currentTestData && currentTestData.section3_vi) {
+        currentTestData.section3_vi.forEach((_, idx) => {
+          const input = document.getElementById(`s3_vi_${idx}`);
+          const btn = document.getElementById(`s3_vi_btn_${idx}`);
+          const content = document.getElementById(`s3_vi_btn_content_${idx}`);
+          const chkValid = document.getElementById(`s3_vi_check_valid_${idx}`);
+          const chkInvalid = document.getElementById(`s3_vi_check_invalid_${idx}`);
+          const feedback = document.getElementById(`s3_vi_feedback_${idx}`);
+
+          if (input) input.value = "";
+          if (btn) {
+            btn.classList.remove('correct', 'incorrect');
+            btn.title = "";
+          }
+          if (content) {
+            content.innerHTML = `Choose`;
+            content.className = "text-slate-400 dark:text-slate-400 font-medium text-xs";
+          }
+          if (feedback) feedback.classList.add('hidden');
+        });
+      }
+      document.querySelectorAll("[id^=s1_preview_]").forEach(p => p.innerHTML = "");
+      document.querySelectorAll("[id^=s2_preview_]").forEach(p => p.innerHTML = "");
+      closeAllDropdowns();
+      document.getElementById("scoreBanner").classList.add("hidden");
+    }
+
+    function toggleDropdown(idx, event) {
+      if (event) event.stopPropagation();
+      const menu = document.getElementById(`s3_vi_menu_${idx}`);
+      const btn = document.getElementById(`s3_vi_btn_${idx}`);
+      const chevron = document.getElementById(`s3_vi_chevron_${idx}`);
+      const container = btn ? btn.closest(".custom-dropdown-container") : null;
+      const isOpen = menu && menu.classList.contains("open-menu");
+
+      closeAllDropdowns();
+
+      if (!isOpen && menu && chevron) {
+        menu.classList.remove("hidden-menu");
+        menu.classList.add("open-menu");
+        chevron.classList.add("rotate-180");
+        if (btn) btn.setAttribute("aria-expanded", "true");
+        if (container) container.classList.add("is-open");
+      }
+    }
+
+    function closeAllDropdowns() {
+      document.querySelectorAll(".custom-dropdown-menu").forEach(m => {
+        m.classList.add("hidden-menu");
+        m.classList.remove("open-menu");
+      });
+      document.querySelectorAll("[id^=s3_vi_chevron_]").forEach(ch => {
+        ch.classList.remove("rotate-180");
+      });
+      document.querySelectorAll(".custom-dropdown-btn").forEach(btn => {
+        btn.setAttribute("aria-expanded", "false");
+      });
+      document.querySelectorAll(".custom-dropdown-container").forEach(c => {
+        c.classList.remove("is-open");
+      });
+    }
+
+    function selectDropdownOption(idx, value, event) {
+      if (event) event.stopPropagation();
+      const input = document.getElementById(`s3_vi_${idx}`);
+      const btn = document.getElementById(`s3_vi_btn_${idx}`);
+      const content = document.getElementById(`s3_vi_btn_content_${idx}`);
+      const feedback = document.getElementById(`s3_vi_feedback_${idx}`);
+
+      if (input) input.value = value;
+      if (btn) {
+        btn.classList.remove('correct', 'incorrect');
+        btn.title = "";
+      }
+      if (feedback) feedback.classList.add("hidden");
+
+      if (value === 'VALID') {
+        if (content) {
+          content.innerHTML = `
+            <span class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-bold text-xs">
+              <svg class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>VALID</span>
+            </span>
+          `;
+          content.className = "";
+        }
+      } else if (value === 'INVALID') {
+        if (content) {
+          content.innerHTML = `
+            <span class="flex items-center gap-1.5 text-blue-600 dark:text-blue-400 font-bold text-xs">
+              <svg class="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+              <span>INVALID</span>
+            </span>
+          `;
+          content.className = "";
+        }
+      }
+
+      closeAllDropdowns();
+    }
+
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".custom-dropdown-container")) {
+        closeAllDropdowns();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeAllDropdowns();
+      }
+    });
+
+    function toggleTimer() {
+      const display = document.getElementById("timerDisplay");
+      const icon = document.getElementById("timerIcon");
+      if (isTimerRunning) {
+        clearInterval(timerInterval);
+        isTimerRunning = false;
+        icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>`;
+      } else {
+        isTimerRunning = true;
+        icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>`;
+        timerInterval = setInterval(() => {
+          timerSeconds++;
+          const mins = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
+          const secs = String(timerSeconds % 60).padStart(2, '0');
+          display.textContent = `${mins}:${secs}`;
+        }, 1000);
+      }
+    }
+
+    window.onload = function() {
+      document.documentElement.classList.add('dark');
+      generateNewTest();
+    };
+  </script>
+</body>
+</html>
